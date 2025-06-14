@@ -1,0 +1,18 @@
+{
+    "site_title": "Project: WARJORN",
+    "server_ip_address": "warjorn.xyz",
+    "background_image": "assets/background.jpg",
+    "favicon_path": "assets/MAIN-yellow_logo_no_bg.png",
+    "loading_page": "true",
+    "logo_image": "assets/MAIN-yellow_logo_no_bg.png",
+    "main_color": "#FAD93D",
+    "text_color": "white",
+    "button_1_text": "Forum",
+    "button_2_text": "Shop",
+    "button_3_text": "Vote",
+    "button_4_text": "Discord",
+    "button_1_link": "#forum",
+    "button_2_link": "http://coff.ee/warjorn_mc",
+    "button_3_link": "#vote",
+    "button_4_link": "https://discord.gg/qhnVxVFTgM"
+}

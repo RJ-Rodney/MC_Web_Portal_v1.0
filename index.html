@@ -1,0 +1,410 @@
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <script src="https://kit.fontawesome.com/abb1b398f4.js" crossorigin="anonymous"></script>
+        <link id="favicon" rel="icon" type="image/png" href="path-to-your-favicon.png">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+        
+        <style>
+                @font-face {
+                    font-family: 'ariblk';
+                    src: url('assets/ariblk.ttf');
+                }
+            
+                body {
+                  background: no-repeat center center fixed;
+                  -webkit-background-size: cover;
+                  -moz-background-size: cover;
+                  -o-background-size: cover;
+                  background-size: cover;
+                  overflow-x: hidden;
+                  overflow-y: auto;
+                  margin: 0;
+                  position: relative;
+                  z-index: 10;
+                  font-family: ariblk;
+                }
+            
+                
+                #logoimg {
+                    width: auto;
+                    height: 200px;
+                }
+                
+                .content {
+                    padding-top: 50px;
+                    z-index: 10;
+                }
+                
+                .buttons {
+                    margin-top: 100px;
+                }
+                
+                .buttons, .button {
+                    display: inline-block;
+                }
+                
+                .button {
+                    color: white;
+                }
+                
+                .button-x {
+                    margin-right: 50px;
+                }
+                
+                
+                .button span {
+                    font-size: 24px;
+                }
+                
+                .button-i {
+                    font-size: 100px;
+                }
+                
+                .mobile {
+                    display: none;
+                }
+                
+                a:link, a:visited, a:hover, a:active {
+                text-decoration: none;
+                }
+                
+                .hover {
+                    animation: bounce 3.5s linear infinite;
+                }
+                
+                @keyframes bounce {
+                    0%, 100% {
+                        transform: translateY(0);
+                    }
+                    50% {
+                        transform: translateY(-10px);
+                    }
+                }
+                
+                .zoom {
+                    transition: transform 0.3s;
+                }
+                
+                .zoom:hover {
+                    transform: scale(1.1);
+                    cursor: pointer;
+                }
+                
+                #desktop_join_bar {
+                    margin-top: 50px;
+                    width: 40%;
+                    height: auto;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    color: black;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                
+                #mobile_join_bar {
+                    width: 100%;
+                    height: auto;
+                    padding-top: 20px;
+                    padding-bottom: 20px;
+                    color: black;
+                    cursor: pointer;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                }
+                
+                .loader {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    z-index: 100;
+                }
+    
+                #loader-img {
+                    border: 4px solid #f3f3f3;
+                    border-top: 4px solid black;
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
+                    animation: spin 2s linear infinite;
+                    margin: 0 auto;
+                }
+        
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+                
+                @media screen and (max-width: 768px) {
+                    .button {
+                        width: 40%;
+                        margin-left: 3%;
+                        margin-right: 3%;
+                    }
+                    .button-y {
+                        margin-bottom: 100px;
+                    }
+                    .button-i {
+                        font-size: 60px;
+                    }
+                    .desktop {
+                        display: none;
+                    }
+                    .mobile {
+                        display: block;
+                    }
+                    .content {
+                        padding-top: 30px;
+                    }
+                }
+                
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Behind content */
+  pointer-events: none; /* Allow interaction with content */
+}
+
+.glow-text {
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); /* Glow effect */
+}
+        </style>
+    </head>
+    
+    <body>
+        <div id="loader" class="loader">
+            <center>
+                <div style="height: 40%; visibility: hidden;">x</div>
+                <div id="loader-img"></div>
+            </center>
+        </div>
+        
+        <div class="particles-container" id="particles-container"></div>
+        <center>
+            <div class="content">
+                <img id="logoimg" class="hover animate__fadeInDown" draggable="false">
+        
+                <br>
+                
+                <div class="buttons animate__fadeInUp">
+                    <a href="" id="button1a">
+                    <div class="button zoom button-x button-y glow-text" id="button1">
+                        <i class="fa-solid fa-book fa-2xl button-i"></i>
+                        <div class="desktop"><br><br><br></div>
+                        <div class="mobile"><br></div>
+                        <br>
+                        <span id="button1_span">button 1</span>
+                    </div>
+                    </a>
+                    <a href="" id="button2a">
+                    <div class="button zoom button-x button-y glow-text" id="button2">
+                        <i class="fa-solid fa-store fa-2xl button-i"></i>
+                        <div class="desktop"><br><br><br></div>
+                        <div class="mobile"><br></div>
+                        <br>
+                        <span id="button2_span">button 2</span>
+                    </div>
+                    </a>
+                    <a href="" id="button3a">
+                    <div class="button zoom button-x glow-text" id="button3">
+                        <i class="fa-solid fa-check-to-slot fa-2xl button-i"></i>
+                        <div class="desktop"><br><br><br></div>
+                        <div class="mobile"><br></div>
+                        <br>
+                        <span id="button3_span">button 3</span>
+                    </div>
+                    </a>
+                    <a href="" id="button4a">
+                    <div class="button zoom glow-text" id="button4">
+                        <i class="fa-brands fa-discord fa-2xl button-i"></i>
+                        <div class="desktop"><br><br><br></div>
+                        <div class="mobile"><br></div>
+                        <br>
+                        <span id="button4_span">button 4</span>
+                    </div>
+                    </a>
+                </div>
+                
+                <div id="desktop_join_bar" class="join-bar desktop zoom animate__fadeInUp" onclick="copyip()">
+                    Join 0 players online
+                </div>
+
+                <div id="mobile_join_bar" class="join-bar mobile animate__fadeInUp" onclick="copyip()">
+                    Join 0 players online
+                </div>
+                
+            </div>
+        </center>
+    </body>
+
+
+<script>
+
+let myvar;
+
+function main_func() {
+    fetch("./assets/settings.json")
+    .then((res) => {
+    return res.json();
+    })
+    .then((data) => {
+    // Access a specific key and value
+    var background_image = data.background_image;
+    //console.log(background_image)
+    
+                        document.getElementById("loader").style.backgroundColor = data.main_color;
+    
+    
+                        document.body.style.backgroundImage = "url('" + background_image + "')";
+                        document.getElementById("logoimg").src = data.logo_image;
+                        
+                        document.getElementById("button1").style.color = data.main_color;
+                        document.getElementById("button2").style.color = data.main_color;
+                        document.getElementById("button3").style.color = data.main_color;
+                        document.getElementById("button4").style.color = data.main_color;
+                        document.getElementById("button1_span").style.color = data.text_color;
+                        document.getElementById("button2_span").style.color = data.text_color;
+                        document.getElementById("button3_span").style.color = data.text_color;
+                        document.getElementById("button4_span").style.color = data.text_color;
+                        document.getElementById("button1_span").innerText = data.button_1_text;
+                        document.getElementById("button2_span").innerText = data.button_2_text;
+                        document.getElementById("button3_span").innerText = data.button_3_text;
+                        document.getElementById("button4_span").innerText = data.button_4_text;
+                        document.getElementById("button1a").href = data.button_1_link;
+                        document.getElementById("button2a").href = data.button_2_link;
+                        document.getElementById("button3a").href = data.button_3_link;
+                        document.getElementById("button4a").href = data.button_4_link;
+                        
+                        document.getElementById('favicon').href = data.favicon_path;
+                        
+                        document.getElementById("desktop_join_bar").style.backgroundColor = data.main_color;
+                        document.getElementById("mobile_join_bar").style.backgroundColor = data.main_color;
+                        
+                        document.title = data.site_title;
+                        
+                        var loading_page = data.loading_page;
+                        
+                        if(loading_page == "true") {
+                            setTimeout(function () {
+                                document.getElementById("loader").style.display = "none";
+                            }, 1000); // 3000 milliseconds = 3 seconds
+                        }
+                        else {
+                            document.getElementById("loader").style.display = "none";
+                        }
+                        
+                        
+                    });
+}
+main_func();
+            
+            
+
+function fetchData() {
+            
+    fetch("./assets/settings.json")
+    .then((res) => {
+    return res.json();
+    })
+    .then((data) => {
+        var myvar = data.server_ip_address;
+                
+                var fetch_url = "https://api.mcsrvstat.us/3/" + myvar
+                fetch(fetch_url)
+                .then(response => response.json())
+                .then(datax => {
+                    // Extract and print a specific value from the JSON data
+                    var current_players_online = datax.players.online; // Replace with the actual property name
+                    //console.log(current_players_online)
+                    var player_message = "Join " + current_players_online + " players at " + myvar;
+                    console.log(player_message)
+                    document.getElementById("desktop_join_bar").innerText = player_message;
+                    document.getElementById("mobile_join_bar").innerText = player_message;
+                })
+                .catch(error => {
+                    console.error("Error fetching data: ", error);
+                });
+                
+                        
+    });
+            
+}//END fetchData function
+fetchData();
+
+
+function copyip() {
+    fetch("./assets/settings.json")
+    .then((res) => {
+    return res.json();
+    })
+    .then((data) => {
+        var thecopyip = data.server_ip_address;
+                
+        navigator.clipboard.writeText(thecopyip);
+                        
+    });
+}//END copyip function
+
+
+ let particles = [];
+
+  function setup() {
+    let canvas = createCanvas(windowWidth, windowHeight);
+    canvas.parent('particles-container'); // Attach canvas to the particles container
+    
+    if (window.innerWidth <= 768) {
+        for (let i = 0; i < 30; i++) {
+          particles.push(new Particle(random(width), random(height)));
+        }
+    }
+    else {
+        for (let i = 0; i < 50; i++) {
+          particles.push(new Particle(random(width), random(height)));
+        }
+    }
+  }
+
+  function draw() {
+    clear(); // Clear the canvas each frame
+    for (let particle of particles) {
+      particle.update();
+      particle.display();
+    }
+  }
+
+class Particle {
+  constructor(x, y) {
+    this.pos = createVector(x, y);
+    this.vel = createVector(random(-1, 1), random(-1, 1));
+  }
+
+  update() {
+    this.pos.add(this.vel);
+
+    if (this.pos.x < 0 || this.pos.x > width) {
+      this.vel.x *= -1; // Reverse horizontal velocity
+    }
+    if (this.pos.y < 0 || this.pos.y > height) {
+      this.vel.y *= -1; // Reverse vertical velocity
+    }
+  }
+
+  display() {
+    noStroke();
+    fill(255);
+    ellipse(this.pos.x, this.pos.y, 5, 5);
+  }
+}
+
+
+
+
+
+</script>
+</html>
